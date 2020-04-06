@@ -38,7 +38,7 @@ class App extends Component {
       return;
     }
     
-    for (let i = 1; i <= ip; i++) {
+    for (let i = 2; i <= ip; i++) {
       for(let j = 1 ; j<=stt ; j++)
       { x= Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
         table.push(<RemoteFile name={name} password={password} key={x+i+j} ip={i} stt={j} />)

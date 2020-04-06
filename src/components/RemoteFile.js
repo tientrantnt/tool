@@ -20,7 +20,7 @@ export default class RemoteFile extends Component {
           '<colorDepth>8</colorDepth>'+
         '</remoteDesktop>'+
       '</server>';
-        return (
+        return (            
             <div>
                 <h5>{item}</h5>
             </div>
