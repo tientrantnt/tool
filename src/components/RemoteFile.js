@@ -13,12 +13,6 @@ export default class RemoteFile extends Component {
           '<password>'+this.props.password+'</password>'+
           '<domain>DESKTOP-GL3S2GL</domain>'+
         '</logonCredentials>'+
-        '<remoteDesktop inherit="None">'+
-          '<size>800 x 600</size>'+
-          '<sameSizeAsClientArea>False</sameSizeAsClientArea>'+
-          '<fullScreen>False</fullScreen>'+
-          '<colorDepth>8</colorDepth>'+
-        '</remoteDesktop>'+
       '</server>';
         return (            
             <div>

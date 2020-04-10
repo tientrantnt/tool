@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import RemoteFile from './components/RemoteFile.js';
+import DefaultFileHeader from './components/DefaultFileHeader';
+import DefaultFileFooter from './components/DefaultFileFooter';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,7 @@ class App extends Component {
       ip:'',
       stt:'',
       password:'',
+      nameIP:'',
       status: false
     }
   }
@@ -32,7 +35,7 @@ class App extends Component {
   }
   createTable = () => {
     let table = [];
-    let {ip,stt,name,password} = this.state;
+    let {ip,stt,nameIP,password} = this.state;
     let x = '';
     if(ip>= 100 || stt >=100){
       return;
@@ -41,21 +44,29 @@ class App extends Component {
     for (let i = 2; i <= ip; i++) {
       for(let j = 1 ; j<=stt ; j++)
       { x= Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
-        table.push(<RemoteFile name={name} password={password} key={x+i+j} ip={i} stt={j} />)
+        table.push(<RemoteFile name={nameIP} password={password} key={x+i+j} ip={i} stt={j} />)
       }
     }
     return table;
+  }
+  createHeader = () => {
+    let {nameIP,password} = this.state;
+  
+    return (
+      <DefaultFileHeader password={password} nameIP = {nameIP}/>
+    );
   }
   onClear=()=>{
     this.setState({
       ip:'',
       stt:'',
-      name:'',
+      nameIP:'',
       password:''
     })
   }
   render() {
-    let {ip,stt,name,password} = this.state;
+    let {ip,stt,nameIP,password} = this.state;
+    // console.log(this.state);
     return (
       <div className="App">
         <div className="container">
@@ -68,8 +79,8 @@ class App extends Component {
               <input
                 type="text"
                 className="form-control"
-                name="name"
-                value={name}
+                name="nameIP"
+                value={nameIP}
                 onChange={this.onChange}
               />
               <label>Số lượng ip :</label>
@@ -105,7 +116,10 @@ class App extends Component {
         </div>
             </div>
             <div  className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+              {this.createHeader()}
+            {/* <DefaultFileHeader password={password} name = {nameIP}/> */}
             {this.createTable()}
+            <DefaultFileFooter/>
             </div>
           </div>
         </div>
