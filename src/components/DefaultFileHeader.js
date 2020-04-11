@@ -18,6 +18,14 @@ export default class DefaultFileHeader extends Component {
              '<fullScreen>False</fullScreen>'+
              '<colorDepth>8</colorDepth>'+
             '</remoteDesktop>'+
+            '<displaySettings inherit="None">'+
+            '<liveThumbnailUpdates>False</liveThumbnailUpdates>'+
+            '<allowThumbnailSessionInteraction>False</allowThumbnailSessionInteraction>'+
+            '<showDisconnectedThumbnails>False</showDisconnectedThumbnails>'+
+            '<thumbnailScale>1</thumbnailScale>'+
+            '<smartSizeDockedWindows>False</smartSizeDockedWindows>'+
+            '<smartSizeUndockedWindows>False</smartSizeUndockedWindows>'+
+            '</displaySettings>'+
             '<server>'+
               '<properties>'+
                 '<name>'+this.props.nameIP+'.1</name>'+
