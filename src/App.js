@@ -37,7 +37,7 @@ class App extends Component {
     let table = [];
     let {ip,stt,nameIP,password} = this.state;
     let x = '';
-    if(ip>= 100 || stt >=100){
+    if(stt >100){
       return;
     }
     
