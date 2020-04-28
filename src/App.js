@@ -13,6 +13,8 @@ class App extends Component {
       stt:'',
       password:'',
       nameIP:'',
+      userBegin: '',
+      ipBegin:'',
       status: false
     }
   }
@@ -33,17 +35,16 @@ class App extends Component {
   onSave = (event) => {
     event.preventDefault();  
   }
+  
   createTable = () => {
+   
     let table = [];
-    let {ip,stt,nameIP,password} = this.state;
+    let {ip,stt,nameIP,password,userBegin,ipBegin} = this.state;
     let x = '';
-    if(stt >100){
-      return;
-    }
-    
-    for (let i = 2; i <= ip; i++) {
-      for(let j = 1 ; j<=stt ; j++)
-      { x= Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
+    for (let i = Number(ipBegin) ; i <= Number(ip) ; i++) {
+      for(let j = Number(userBegin) ; j<= Number(stt) ; j++)
+      {
+        x = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
         table.push(<RemoteFile name={nameIP} password={password} key={x+i+j} ip={i} stt={j} />)
       }
     }
@@ -65,8 +66,8 @@ class App extends Component {
     })
   }
   render() {
-    let {ip,stt,nameIP,password} = this.state;
-    // console.log(this.state);
+    let {ip,stt,nameIP,password,userBegin,ipBegin} = this.state;
+
     return (
       <div className="App">
         <div className="container">
@@ -83,12 +84,28 @@ class App extends Component {
                 value={nameIP}
                 onChange={this.onChange}
               />
+              <label>Số ip bắt đầu :</label>
+              <input
+                type="text"
+                className="form-control"
+                name="ipBegin"
+                value={ipBegin}
+                onChange={this.onChange}
+              />
               <label>Số lượng ip :</label>
               <input
                 type="text"
                 className="form-control"
                 name="ip"
                 value={ip}
+                onChange={this.onChange}
+              />
+              <label>user bắt đầu :</label>
+              <input
+                type="text"
+                className="form-control"
+                name="userBegin"
+                value={userBegin}
                 onChange={this.onChange}
               />
               <label>Số lượng user :</label>
@@ -118,7 +135,7 @@ class App extends Component {
             <div  className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
               {this.createHeader()}
             {/* <DefaultFileHeader password={password} name = {nameIP}/> */}
-            {this.createTable()}
+              {this.createTable()}
             <DefaultFileFooter/>
             </div>
           </div>
